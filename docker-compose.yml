@@ -1,0 +1,19 @@
+services:
+  web1:
+    image: pstu/students
+    ports:
+      - "8080:8080"
+  web2:
+    image: pstu/students
+    ports:
+      - "8081:8080"
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - /c/Users/Beth/demo/nginx:/etc/nginx/conf.d
+    links:
+      - web1
+      - web2
